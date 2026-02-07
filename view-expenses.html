@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Expenses - Expense Tracker</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="navbar-container">
+            <div class="navbar-brand">
+                <h1 class="logo">💰 ExpenseTracker</h1>
+            </div>
+            
+            <button class="navbar-toggle" id="navbarToggle" aria-label="Toggle navigation menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <div class="navbar-menu" id="navbarMenu">
+                <ul class="nav-list">
+                    <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+                    <li><a href="add-expense.html" class="nav-link">Add Expense</a></li>
+                    <li><a href="view-expenses.html" class="nav-link active" aria-current="page">View Expenses</a></li>
+                    <li><a href="profile.html" class="nav-link">Profile</a></li>
+                </ul>
+                
+                <div class="nav-actions">
+                    <button class="btn btn-secondary btn-small" id="logoutBtn">Logout</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Header Section -->
+            <section class="page-header">
+                <h2>All Expenses</h2>
+                <p>View and manage all your transactions</p>
+            </section>
+
+            <!-- Filter and Search Section -->
+            <section class="filter-section">
+                <div class="filter-controls">
+                    <div class="search-box">
+                        <input 
+                            type="text" 
+                            id="searchInput" 
+                            placeholder="Search expenses..." 
+                            aria-label="Search expenses"
+                        >
+                        <span class="search-icon">🔍</span>
+                    </div>
+
+                    <div class="filter-group">
+                        <select id="categoryFilter" aria-label="Filter by category">
+                            <option value="">All Categories</option>
+                            <option value="food">🍔 Food & Dining</option>
+                            <option value="transportation">🚗 Transportation</option>
+                            <option value="entertainment">🎬 Entertainment</option>
+                            <option value="shopping">🛍️ Shopping</option>
+                            <option value="utilities">🔌 Utilities</option>
+                            <option value="health">💊 Health & Medical</option>
+                            <option value="education">📚 Education</option>
+                            <option value="personal">👤 Personal Care</option>
+                            <option value="savings">💰 Savings</option>
+                            <option value="investment">📈 Investment</option>
+                            <option value="travel">✈️ Travel</option>
+                            <option value="other">📌 Other</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <select id="typeFilter" aria-label="Filter by type">
+                            <option value="">All Types</option>
+                            <option value="expense">Expenses</option>
+                            <option value="income">Income</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <select id="dateFilter" aria-label="Filter by date range">
+                            <option value="all">All Time</option>
+                            <option value="today">Today</option>
+                            <option value="week">This Week</option>
+                            <option value="month">This Month</option>
+                            <option value="quarter">This Quarter</option>
+                            <option value="year">This Year</option>
+                            <option value="custom">Custom Range</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group" id="customDateFilter" style="display: none;">
+                        <input type="date" id="startDate" aria-label="Start date">
+                        <input type="date" id="endDate" aria-label="End date">
+                    </div>
+
+                    <button class="btn btn-secondary btn-small" id="resetFilters">Reset Filters</button>
+                </div>
+
+                <div class="sorting-controls">
+                    <label for="sortBy">Sort by:</label>
+                    <select id="sortBy" aria-label="Sort expenses">
+                        <option value="recent">Most Recent</option>
+                        <option value="oldest">Oldest</option>
+                        <option value="amount-high">Highest Amount</option>
+                        <option value="amount-low">Lowest Amount</option>
+                        <option value="category">Category</option>
+                    </select>
+                </div>
+            </section>
+
+            <!-- Summary Stats -->
+            <section class="summary-stats">
+                <div class="stat-box">
+                    <h4>Total Filtered</h4>
+                    <p class="stat-amount" id="filteredTotal">$0.00</p>
+                </div>
+                <div class="stat-box">
+                    <h4>Count</h4>
+                    <p class="stat-amount" id="filteredCount">0</p>
+                </div>
+                <div class="stat-box">
+                    <h4>Average</h4>
+                    <p class="stat-amount" id="filteredAverage">$0.00</p>
+                </div>
+            </section>
+
+            <!-- Expenses List -->
+            <section class="expenses-section">
+                <div class="view-toggle">
+                    <button class="view-btn active" data-view="list" aria-label="List view">📋 List</button>
+                    <button class="view-btn" data-view="card" aria-label="Card view">🗂️ Cards</button>
+                    <button class="view-btn" data-view="table" aria-label="Table view">📊 Table</button>
+                </div>
+
+                <!-- List View -->
+                <div id="listView" class="view-container active">
+                    <div id="expensesList" class="expenses-list">
+                        <div class="empty-state">
+                            <p>No expenses found. <a href="add-expense.html">Add your first expense</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card View -->
+                <div id="cardView" class="view-container">
+                    <div id="expensesCard" class="expenses-cards">
+                        <div class="empty-state">
+                            <p>No expenses found. <a href="add-expense.html">Add your first expense</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Table View -->
+                <div id="tableView" class="view-container">
+                    <div class="table-wrapper">
+                        <table class="expenses-table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Title</th>
+                                    <th>Category</th>
+                                    <th>Type</th>
+                                    <th>Amount</th>
+                                    <th>Payment Method</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="expensesTableBody">
+                                <tr class="empty-row">
+                                    <td colspan="7" class="empty-state">
+                                        <p>No expenses found. <a href="add-expense.html">Add your first expense</a></p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Bulk Actions -->
+            <section class="bulk-actions" id="bulkActions" style="display: none;">
+                <div class="action-buttons">
+                    <button class="btn btn-secondary btn-small" id="selectAllBtn">Select All</button>
+                    <button class="btn btn-danger btn-small" id="deleteSelectedBtn">Delete Selected</button>
+                    <button class="btn btn-secondary btn-small" id="exportSelectedBtn">Export Selected</button>
+                </div>
+            </section>
+
+            <!-- Export Section -->
+            <section class="export-section">
+                <div class="export-buttons">
+                    <button class="btn btn-secondary btn-medium" id="exportCSVBtn">📥 Export as CSV</button>
+                    <button class="btn btn-secondary btn-medium" id="exportPDFBtn">📄 Export as PDF</button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Expense Tracker. All rights reserved. Manage your finances with ease.</p>
+        </div>
+    </footer>
+
+    <!-- Modal for Edit -->
+    <div id="editModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Edit Expense</h3>
+                <button class="close-modal" aria-label="Close modal">&times;</button>
+            </div>
+            <form id="editForm">
+                <div class="input-group">
+                    <label for="editTitle">Title</label>
+                    <input type="text" id="editTitle" required>
+                </div>
+                <div class="input-group">
+                    <label for="editAmount">Amount</label>
+                    <input type="number" id="editAmount" step="0.01" min="0" required>
+                </div>
+                <div class="input-group">
+                    <label for="editCategory">Category</label>
+                    <select id="editCategory" required>
+                        <option value="food">🍔 Food & Dining</option>
+                        <option value="transportation">🚗 Transportation</option>
+                        <option value="entertainment">🎬 Entertainment</option>
+                        <option value="shopping">🛍️ Shopping</option>
+                        <option value="utilities">🔌 Utilities</option>
+                        <option value="health">💊 Health & Medical</option>
+                        <option value="education">📚 Education</option>
+                        <option value="personal">👤 Personal Care</option>
+                        <option value="savings">💰 Savings</option>
+                        <option value="investment">📈 Investment</option>
+                        <option value="travel">✈️ Travel</option>
+                        <option value="other">📌 Other</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="editDate">Date</label>
+                    <input type="date" id="editDate" required>
+                </div>
+                <div class="input-group">
+                    <label for="editDescription">Description</label>
+                    <textarea id="editDescription" rows="3"></textarea>
+                </div>
+                <div class="modal-actions">
+                    <button type="submit" class="btn btn-primary btn-small">Save Changes</button>
+                    <button type="button" class="btn btn-secondary btn-small close-modal">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/utils.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/navbar.js"></script>
+    <script src="js/charts.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

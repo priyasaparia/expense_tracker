@@ -1,0 +1,310 @@
+/* ========================================
+   AUTHENTICATION STYLES
+   ======================================== */
+
+.auth-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: var(--spacing-md);
+}
+
+.auth-form {
+    background: var(--bg-white);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-2xl);
+    width: 100%;
+    max-width: 450px;
+    box-shadow: var(--shadow-xl);
+    animation: slideUp var(--transition-normal);
+    display: none;
+}
+
+.auth-form.active {
+    display: block;
+}
+
+/* ========================================
+   FORM HEADER
+   ======================================== */
+
+.form-header {
+    text-align: center;
+    margin-bottom: var(--spacing-2xl);
+}
+
+.form-header h1 {
+    color: var(--text-dark);
+    margin-bottom: var(--spacing-sm);
+}
+
+.form-header p {
+    color: var(--text-light);
+    font-size: 0.95rem;
+}
+
+/* ========================================
+   FORM GROUP
+   ======================================== */
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.input-group label {
+    font-weight: 600;
+    color: var(--text-dark);
+    font-size: 0.95rem;
+}
+
+.input-group input,
+.input-group select,
+.input-group textarea {
+    padding: var(--spacing-md);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    transition: all var(--transition-fast);
+}
+
+.input-group input:focus,
+.input-group select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+/* ========================================
+   PASSWORD INPUT WRAPPER
+   ======================================== */
+
+.password-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-input-wrapper input {
+    padding-right: 2.5rem;
+}
+
+.toggle-password {
+    position: absolute;
+    right: var(--spacing-md);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    padding: var(--spacing-sm);
+    color: var(--text-light);
+    transition: color var(--transition-fast);
+}
+
+.toggle-password:hover {
+    color: var(--primary-color);
+}
+
+/* ========================================
+   PASSWORD STRENGTH
+   ======================================== */
+
+.password-strength {
+    margin-top: var(--spacing-sm);
+    height: 4px;
+    background-color: var(--bg-lighter);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.strength-bar {
+    height: 100%;
+    width: 0;
+    transition: width var(--transition-normal), background-color var(--transition-normal);
+    border-radius: 2px;
+}
+
+.strength-bar.weak {
+    width: 33%;
+    background-color: var(--danger-color);
+}
+
+.strength-bar.fair {
+    width: 66%;
+    background-color: var(--warning-color);
+}
+
+.strength-bar.strong {
+    width: 100%;
+    background-color: var(--success-color);
+}
+
+.password-strength-text {
+    font-size: 0.75rem;
+    margin-top: var(--spacing-xs);
+    font-weight: 600;
+}
+
+/* ========================================
+   REMEMBER ME / CHECKBOX
+   ======================================== */
+
+.remember-me,
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.remember-me input,
+.checkbox-group input {
+    width: auto;
+    cursor: pointer;
+}
+
+.remember-me label,
+.checkbox-group label {
+    margin: 0;
+    font-weight: 500;
+    cursor: pointer;
+    color: var(--text-light);
+}
+
+/* ========================================
+   FORM BUTTONS
+   ======================================== */
+
+.form-group .btn {
+    width: 100%;
+    padding: var(--spacing-md);
+    font-size: 1rem;
+    border: none;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    margin-top: var(--spacing-md);
+}
+
+.form-group .btn:first-of-type {
+    margin-top: 0;
+}
+
+/* ========================================
+   FORM FOOTER
+   ======================================== */
+
+.form-footer {
+    text-align: center;
+    border-top: 1px solid var(--border-color);
+    padding-top: var(--spacing-lg);
+}
+
+.form-footer p {
+    margin-bottom: var(--spacing-sm);
+    color: var(--text-light);
+    font-size: 0.95rem;
+}
+
+.form-footer p:last-child {
+    margin-bottom: 0;
+}
+
+.toggle-form-btn {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0;
+    text-decoration: underline;
+    transition: color var(--transition-fast);
+}
+
+.toggle-form-btn:hover {
+    color: var(--primary-dark);
+}
+
+.forgot-password-btn {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    cursor: pointer;
+    font-weight: 600;
+    text-decoration: underline;
+    padding: 0;
+    transition: color var(--transition-fast);
+}
+
+.forgot-password-btn:hover {
+    color: var(--primary-dark);
+}
+
+/* ========================================
+   ERROR MESSAGES
+   ======================================== */
+
+.error-message {
+    color: var(--danger-color);
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-top: var(--spacing-xs);
+}
+
+/* ========================================
+   FORM MESSAGE
+   ======================================== */
+
+.form-message {
+    text-align: center;
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    font-weight: 500;
+    font-size: 0.95rem;
+    display: none;
+}
+
+.form-message.show {
+    display: block;
+}
+
+.form-message.success-message {
+    background-color: rgba(16, 185, 129, 0.1);
+    color: var(--success-color);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.form-message.error-message {
+    background-color: rgba(239, 68, 68, 0.1);
+    color: var(--danger-color);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+/* ========================================
+   LOADING STATE
+   ======================================== */
+
+.btn.loading {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.btn.loading::after {
+    content: '';
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    margin-left: var(--spacing-sm);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 0.8s linear infinite;
+}

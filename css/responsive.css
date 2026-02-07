@@ -1,0 +1,485 @@
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+/* ========================================
+   TABLET SCREENS (768px - 1024px)
+   ======================================== */
+
+@media (max-width: 1024px) {
+    .container {
+        max-width: 100%;
+        padding: 0 var(--spacing-md);
+    }
+
+    .summary-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .charts-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .filter-controls {
+        grid-template-columns: 1fr;
+    }
+
+    .search-box {
+        grid-column: 1;
+    }
+
+    .action-buttons {
+        grid-template-columns: 1fr;
+    }
+
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.5rem; }
+    h3 { font-size: 1.25rem; }
+}
+
+/* ========================================
+   MOBILE SCREENS (0px - 768px)
+   ======================================== */
+
+@media (max-width: 768px) {
+    /* Typography */
+    h1 { font-size: 1.75rem; }
+    h2 { font-size: 1.25rem; }
+    h3 { font-size: 1rem; }
+    h4 { font-size: 0.95rem; }
+
+    /* Spacing */
+    .container {
+        padding: 0 var(--spacing-md);
+    }
+
+    /* Navbar */
+    .navbar-toggle {
+        display: flex;
+    }
+
+    .navbar-menu {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        flex-direction: column;
+        max-height: calc(100vh - 70px);
+        overflow-y: auto;
+        z-index: 999;
+        gap: 0;
+        transform: translateX(-100%);
+        transition: transform var(--transition-normal);
+    }
+
+    .navbar-menu.active {
+        transform: translateX(0);
+    }
+
+    .nav-list {
+        flex-direction: column;
+        gap: 0;
+        width: 100%;
+    }
+
+    .nav-list li {
+        width: 100%;
+    }
+
+    .nav-link {
+        display: block;
+        padding: var(--spacing-md);
+        border-radius: 0;
+        width: 100%;
+    }
+
+    .nav-link::after {
+        display: none;
+    }
+
+    .nav-actions {
+        display: block;
+        width: 100%;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding: var(--spacing-md);
+    }
+
+    .nav-actions .btn {
+        width: 100%;
+    }
+
+    /* Layout */
+    .main-content {
+        padding: var(--spacing-lg) 0;
+    }
+
+    /* Summary Grid */
+    .summary-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+
+    .summary-card {
+        flex-direction: column;
+        text-align: center;
+        padding: var(--spacing-lg);
+    }
+
+    /* Charts */
+    .charts-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .chart-element {
+        height: 250px;
+    }
+
+    /* Forms */
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+
+    .form-section {
+        padding: var(--spacing-lg);
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .form-actions .btn {
+        width: 100%;
+    }
+
+    .template-buttons {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-sm);
+    }
+
+    .template-btn {
+        padding: var(--spacing-sm);
+        font-size: 0.85rem;
+    }
+
+    /* Auth Form */
+    .auth-form {
+        padding: var(--spacing-lg);
+        max-width: 100%;
+    }
+
+    /* Profile */
+    .profile-card {
+        flex-direction: column;
+        text-align: center;
+        padding: var(--spacing-lg);
+    }
+
+    .profile-avatar {
+        width: 80px;
+        height: 80px;
+        font-size: 1.75rem;
+    }
+
+    /* Tabs */
+    .tabs-header {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+    }
+
+    .tab-btn {
+        min-width: 120px;
+        padding: var(--spacing-md) var(--spacing-sm);
+        font-size: 0.85rem;
+    }
+
+    /* Filter Controls */
+    .filter-controls {
+        grid-template-columns: 1fr;
+    }
+
+    .sorting-controls {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .sorting-controls select {
+        width: 100%;
+    }
+
+    /* Table View */
+    .expenses-table {
+        font-size: 0.85rem;
+    }
+
+    .expenses-table th,
+    .expenses-table td {
+        padding: var(--spacing-sm);
+    }
+
+    /* Cards View */
+    .expenses-cards {
+        grid-template-columns: 1fr;
+    }
+
+    /* Filter Section */
+    .filter-section {
+        padding: var(--spacing-md);
+    }
+
+    .filter-controls {
+        gap: var(--spacing-sm);
+    }
+
+    /* Welcome Card */
+    .welcome-card {
+        padding: var(--spacing-lg);
+    }
+
+    .welcome-card h2 {
+        font-size: 1.25rem;
+    }
+
+    /* Page Header */
+    .page-header {
+        padding: var(--spacing-lg);
+    }
+
+    /* Section Header */
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-md);
+    }
+
+    /* Quick Actions */
+    .action-buttons {
+        grid-template-columns: 1fr;
+    }
+
+    /* Modal */
+    .modal-content {
+        width: 95%;
+        border-radius: var(--radius-md);
+    }
+
+    /* Summary Stats */
+    .summary-stats {
+        grid-template-columns: 1fr;
+    }
+
+    /* View Toggle */
+    .view-toggle {
+        gap: var(--spacing-sm);
+    }
+
+    .view-btn {
+        padding: var(--spacing-sm);
+        font-size: 0.85rem;
+    }
+}
+
+/* ========================================
+   SMALL MOBILE (0px - 480px)
+   ======================================== */
+
+@media (max-width: 480px) {
+    h1 { font-size: 1.5rem; }
+    h2 { font-size: 1.1rem; }
+    h3 { font-size: 0.95rem; }
+
+    .container {
+        padding: 0 var(--spacing-sm);
+    }
+
+    /* Navbar */
+    .navbar-brand .logo {
+        font-size: 1.1rem;
+    }
+
+    .navbar-container {
+        padding: var(--spacing-sm);
+    }
+
+    /* Summary Card */
+    .summary-card .card-icon {
+        font-size: 2rem;
+    }
+
+    .summary-card .amount {
+        font-size: 1.5rem;
+    }
+
+    /* Form */
+    .form-section {
+        padding: var(--spacing-md);
+    }
+
+    .form-col {
+        gap: var(--spacing-sm);
+    }
+
+    /* Auth Form */
+    .auth-container {
+        padding: var(--spacing-sm);
+    }
+
+    .auth-form {
+        padding: var(--spacing-lg);
+    }
+
+    .form-header h1 {
+        font-size: 1.5rem;
+    }
+
+    /* Profile Card */
+    .profile-card {
+        padding: var(--spacing-lg);
+    }
+
+    .profile-avatar {
+        width: 70px;
+        height: 70px;
+        font-size: 1.5rem;
+    }
+
+    /* Tab Content */
+    .tab-content {
+        padding: var(--spacing-md);
+    }
+
+    /* Template Buttons */
+    .template-buttons {
+        grid-template-columns: 1fr;
+    }
+
+    /* Transaction item */
+    .transaction-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-sm);
+    }
+
+    .transaction-amount {
+        width: 100%;
+        text-align: left;
+    }
+
+    /* Filter Controls */
+    .filter-controls {
+        gap: var(--spacing-xs);
+    }
+
+    .filter-controls > div {
+        min-width: 100%;
+    }
+
+    /* Data Section */
+    .data-section {
+        padding: var(--spacing-md);
+    }
+}
+
+/* ========================================
+   LANDSCAPE ORIENTATION
+   ======================================== */
+
+@media (max-width: 768px) and (orientation: landscape) {
+    .main-content {
+        padding: var(--spacing-lg) 0;
+    }
+
+    .chart-element {
+        height: 200px;
+    }
+
+    .summary-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .action-buttons {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    h2 { font-size: 1rem; }
+    h3 { font-size: 0.9rem; }
+}
+
+/* ========================================
+   PRINT STYLES
+   ======================================== */
+
+@media print {
+    .navbar,
+    .footer,
+    .filter-section,
+    .view-toggle,
+    .form-actions,
+    .export-buttons,
+    .bulk-actions,
+    button {
+        display: none;
+    }
+
+    body {
+        background: white;
+    }
+
+    .main-content {
+        padding: 0;
+    }
+
+    .expenses-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .expenses-table th,
+    .expenses-table td {
+        border: 1px solid #000;
+        padding: 8px;
+    }
+}
+
+/* ========================================
+   HIGH CONTRAST MODE
+   ======================================== */
+
+@media (prefers-contrast: more) {
+    :root {
+        --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.3);
+        --border-color: #333;
+    }
+
+    .summary-card {
+        border: 2px solid var(--primary-color);
+    }
+}
+
+/* ========================================
+   DARK MODE (Future support)
+   ======================================== */
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --text-dark: #f9fafb;
+        --text-light: #d1d5db;
+        --text-lighter: #9ca3af;
+        --bg-white: #1f2937;
+        --bg-light: #111827;
+        --bg-lighter: #374151;
+        --border-color: #4b5563;
+    }
+}
+
+/* ========================================
+   REDUCED MOTION
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Expense - Expense Tracker</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/form.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="navbar-container">
+            <div class="navbar-brand">
+                <h1 class="logo">💰 ExpenseTracker</h1>
+            </div>
+            
+            <button class="navbar-toggle" id="navbarToggle" aria-label="Toggle navigation menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <div class="navbar-menu" id="navbarMenu">
+                <ul class="nav-list">
+                    <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+                    <li><a href="add-expense.html" class="nav-link active" aria-current="page">Add Expense</a></li>
+                    <li><a href="view-expenses.html" class="nav-link">View Expenses</a></li>
+                    <li><a href="profile.html" class="nav-link">Profile</a></li>
+                </ul>
+                
+                <div class="nav-actions">
+                    <button class="btn btn-secondary btn-small" id="logoutBtn">Logout</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <section class="form-section">
+                <h2>Add New Expense</h2>
+                <p class="section-subtitle">Record your spending to track your finances</p>
+
+                <div class="form-wrapper">
+                    <form id="addExpenseForm" class="form-group">
+                        <div class="form-row">
+                            <div class="form-col">
+                                <div class="input-group">
+                                    <label for="expenseTitle">Expense Title *</label>
+                                    <input 
+                                        type="text" 
+                                        id="expenseTitle" 
+                                        placeholder="e.g., Groceries, Fuel, Entertainment" 
+                                        required
+                                        aria-label="Expense title"
+                                    >
+                                    <span class="error-message" id="titleError"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-col">
+                                <div class="input-group">
+                                    <label for="expenseAmount">Amount ($) *</label>
+                                    <input 
+                                        type="number" 
+                                        id="expenseAmount" 
+                                        placeholder="0.00" 
+                                        step="0.01" 
+                                        min="0" 
+                                        required
+                                        aria-label="Expense amount"
+                                    >
+                                    <span class="error-message" id="amountError"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-col">
+                                <div class="input-group">
+                                    <label for="expenseCategory">Category *</label>
+                                    <select id="expenseCategory" required aria-label="Expense category">
+                                        <option value="">Select a category</option>
+                                        <option value="food">🍔 Food & Dining</option>
+                                        <option value="transportation">🚗 Transportation</option>
+                                        <option value="entertainment">🎬 Entertainment</option>
+                                        <option value="shopping">🛍️ Shopping</option>
+                                        <option value="utilities">🔌 Utilities</option>
+                                        <option value="health">💊 Health & Medical</option>
+                                        <option value="education">📚 Education</option>
+                                        <option value="personal">👤 Personal Care</option>
+                                        <option value="savings">💰 Savings</option>
+                                        <option value="investment">📈 Investment</option>
+                                        <option value="travel">✈️ Travel</option>
+                                        <option value="other">📌 Other</option>
+                                    </select>
+                                    <span class="error-message" id="categoryError"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-col">
+                                <div class="input-group">
+                                    <label for="expenseDate">Date *</label>
+                                    <input 
+                                        type="date" 
+                                        id="expenseDate" 
+                                        required
+                                        aria-label="Expense date"
+                                    >
+                                    <span class="error-message" id="dateError"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-col full">
+                                <div class="input-group">
+                                    <label for="expenseDescription">Description (Optional)</label>
+                                    <textarea 
+                                        id="expenseDescription" 
+                                        placeholder="Add any notes about this expense..." 
+                                        rows="4"
+                                        aria-label="Expense description"
+                                    ></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-col">
+                                <div class="input-group">
+                                    <label for="expenseType">Type of Expense *</label>
+                                    <select id="expenseType" required aria-label="Type of expense">
+                                        <option value="">Select type</option>
+                                        <option value="expense">Expense</option>
+                                        <option value="income">Income</option>
+                                    </select>
+                                    <span class="error-message" id="typeError"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-col">
+                                <div class="input-group">
+                                    <label for="expensePayment">Payment Method</label>
+                                    <select id="expensePayment" aria-label="Payment method">
+                                        <option value="cash">Cash</option>
+                                        <option value="credit">Credit Card</option>
+                                        <option value="debit">Debit Card</option>
+                                        <option value="online">Online Transfer</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-col">
+                                <div class="checkbox-group">
+                                    <input type="checkbox" id="recurringExpense">
+                                    <label for="recurringExpense">This is a recurring expense</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-col">
+                                <div class="input-group" id="recurringOptions" style="display: none;">
+                                    <label for="recurringFrequency">Frequency</label>
+                                    <select id="recurringFrequency" aria-label="Recurring frequency">
+                                        <option value="daily">Daily</option>
+                                        <option value="weekly">Weekly</option>
+                                        <option value="biweekly">Bi-weekly</option>
+                                        <option value="monthly">Monthly</option>
+                                        <option value="quarterly">Quarterly</option>
+                                        <option value="yearly">Yearly</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary btn-large">Add Expense</button>
+                            <a href="dashboard.html" class="btn btn-secondary btn-large">Cancel</a>
+                        </div>
+
+                        <span class="form-message success-message" id="successMessage"></span>
+                        <span class="form-message error-message" id="errorMessage"></span>
+                    </form>
+                </div>
+
+                <!-- Quick Templates -->
+                <div class="templates-section">
+                    <h3>Quick Templates</h3>
+                    <div class="template-buttons">
+                        <button class="template-btn" data-category="food" data-title="Restaurant" data-amount="15">
+                            🍔 Restaurant
+                        </button>
+                        <button class="template-btn" data-category="transportation" data-title="Gas Fill-up" data-amount="50">
+                            ⛽ Gas Fill-up
+                        </button>
+                        <button class="template-btn" data-category="utilities" data-title="Electric Bill" data-amount="100">
+                            🔌 Electric Bill
+                        </button>
+                        <button class="template-btn" data-category="entertainment" data-title="Movie Tickets" data-amount="25">
+                            🎬 Movie Tickets
+                        </button>
+                        <button class="template-btn" data-category="shopping" data-title="Groceries" data-amount="75">
+                            🛒 Groceries
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Expense Tracker. All rights reserved. Manage your finances with ease.</p>
+        </div>
+    </footer>
+
+    <script src="js/utils.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/navbar.js"></script>
+    <script src="js/expense.js"></script>
+</body>
+</html>

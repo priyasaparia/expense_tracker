@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Expense Tracker</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="navbar-container">
+            <div class="navbar-brand">
+                <h1 class="logo">💰 ExpenseTracker</h1>
+            </div>
+            
+            <button class="navbar-toggle" id="navbarToggle" aria-label="Toggle navigation menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <div class="navbar-menu" id="navbarMenu">
+                <ul class="nav-list">
+                    <li><a href="dashboard.html" class="nav-link active" aria-current="page">Dashboard</a></li>
+                    <li><a href="add-expense.html" class="nav-link">Add Expense</a></li>
+                    <li><a href="view-expenses.html" class="nav-link">View Expenses</a></li>
+                    <li><a href="profile.html" class="nav-link">Profile</a></li>
+                </ul>
+                
+                <div class="nav-actions">
+                    <button class="btn btn-secondary btn-small" id="logoutBtn">Logout</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Welcome Section -->
+            <section class="welcome-section">
+                <div class="welcome-card">
+                    <h2>Welcome, <span id="userName">User</span>!</h2>
+                    <p>Here's your financial overview</p>
+                </div>
+            </section>
+
+            <!-- Summary Cards -->
+            <section class="summary-section">
+                <div class="summary-grid">
+                    <div class="summary-card total-income">
+                        <div class="card-icon">📈</div>
+                        <div class="card-content">
+                            <h3>Total Income</h3>
+                            <p class="amount" id="totalIncome">$0.00</p>
+                        </div>
+                    </div>
+
+                    <div class="summary-card total-expenses">
+                        <div class="card-icon">📊</div>
+                        <div class="card-content">
+                            <h3>Total Expenses</h3>
+                            <p class="amount" id="totalExpenses">$0.00</p>
+                        </div>
+                    </div>
+
+                    <div class="summary-card balance">
+                        <div class="card-icon">💵</div>
+                        <div class="card-content">
+                            <h3>Balance</h3>
+                            <p class="amount" id="balance">$0.00</p>
+                        </div>
+                    </div>
+
+                    <div class="summary-card monthly-savings">
+                        <div class="card-icon">🎯</div>
+                        <div class="card-content">
+                            <h3>Monthly Savings</h3>
+                            <p class="amount" id="monthlySavings">$0.00</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Charts Section -->
+            <section class="charts-section">
+                <div class="charts-grid">
+                    <div class="chart-container">
+                        <h3>Spending by Category</h3>
+                        <div class="chart-element">
+                            <canvas id="categoryChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="chart-container">
+                        <h3>Monthly Trend</h3>
+                        <div class="chart-element">
+                            <canvas id="trendChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Recent Transactions -->
+            <section class="recent-transactions">
+                <div class="section-header">
+                    <h3>Recent Transactions</h3>
+                    <a href="view-expenses.html" class="link">View All</a>
+                </div>
+                
+                <div class="transactions-list" id="recentTransactionsList">
+                    <div class="empty-state">
+                        <p>No transactions yet. <a href="add-expense.html">Add your first expense</a></p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quick Actions -->
+            <section class="quick-actions">
+                <div class="action-buttons">
+                    <a href="add-expense.html" class="btn btn-primary btn-large">
+                        <span class="btn-icon">➕</span> Add New Expense
+                    </a>
+                    <a href="view-expenses.html" class="btn btn-secondary btn-large">
+                        <span class="btn-icon">📋</span> View All Expenses
+                    </a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Expense Tracker. All rights reserved. Manage your finances with ease.</p>
+        </div>
+    </footer>
+
+    <script src="js/utils.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/navbar.js"></script>
+    <script src="js/charts.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

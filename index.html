@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker - Manage Your Finances</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/auth.css">
+    <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+    <div class="auth-container">
+        <!-- Sign In Form -->
+        <div class="auth-form sign-in-form active">
+            <div class="form-header">
+                <h1>Welcome Back</h1>
+                <p>Manage your expenses efficiently</p>
+            </div>
+            
+            <form id="signInForm" class="form-group">
+                <div class="input-group">
+                    <label for="signInEmail">Email Address</label>
+                    <input 
+                        type="email" 
+                        id="signInEmail" 
+                        placeholder="Enter your email" 
+                        required 
+                        aria-label="Email address"
+                    >
+                    <span class="error-message" id="signInEmailError"></span>
+                </div>
+
+                <div class="input-group">
+                    <label for="signInPassword">Password</label>
+                    <div class="password-input-wrapper">
+                        <input 
+                            type="password" 
+                            id="signInPassword" 
+                            placeholder="Enter your password" 
+                            required 
+                            aria-label="Password"
+                        >
+                        <button 
+                            type="button" 
+                            class="toggle-password" 
+                            aria-label="Toggle password visibility"
+                        >
+                            👁️
+                        </button>
+                    </div>
+                    <span class="error-message" id="signInPasswordError"></span>
+                </div>
+
+                <div class="remember-me">
+                    <input type="checkbox" id="rememberMe">
+                    <label for="rememberMe">Remember me</label>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-large">Sign In</button>
+                <span class="form-message success-message" id="signInSuccess"></span>
+                <span class="form-message error-message" id="signInError"></span>
+            </form>
+
+            <div class="form-footer">
+                <p>Don't have an account? <button type="button" class="toggle-form-btn" onclick="toggleForms()">Sign Up</button></p>
+                <p><button type="button" class="forgot-password-btn">Forgot Password?</button></p>
+            </div>
+        </div>
+
+        <!-- Sign Up Form -->
+        <div class="auth-form sign-up-form">
+            <div class="form-header">
+                <h1>Create Account</h1>
+                <p>Start tracking your expenses today</p>
+            </div>
+            
+            <form id="signUpForm" class="form-group">
+                <div class="input-group">
+                    <label for="signUpName">Full Name</label>
+                    <input 
+                        type="text" 
+                        id="signUpName" 
+                        placeholder="Enter your full name" 
+                        required 
+                        aria-label="Full name"
+                    >
+                    <span class="error-message" id="signUpNameError"></span>
+                </div>
+
+                <div class="input-group">
+                    <label for="signUpEmail">Email Address</label>
+                    <input 
+                        type="email" 
+                        id="signUpEmail" 
+                        placeholder="Enter your email" 
+                        required 
+                        aria-label="Email address"
+                    >
+                    <span class="error-message" id="signUpEmailError"></span>
+                </div>
+
+                <div class="input-group">
+                    <label for="signUpPassword">Password</label>
+                    <div class="password-input-wrapper">
+                        <input 
+                            type="password" 
+                            id="signUpPassword" 
+                            placeholder="Min 8 characters" 
+                            required 
+                            aria-label="Password"
+                        >
+                        <button 
+                            type="button" 
+                            class="toggle-password" 
+                            aria-label="Toggle password visibility"
+                        >
+                            👁️
+                        </button>
+                    </div>
+                    <span class="error-message" id="signUpPasswordError"></span>
+                    <div class="password-strength">
+                        <div class="strength-bar" id="strengthBar"></div>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="signUpConfirmPassword">Confirm Password</label>
+                    <div class="password-input-wrapper">
+                        <input 
+                            type="password" 
+                            id="signUpConfirmPassword" 
+                            placeholder="Confirm your password" 
+                            required 
+                            aria-label="Confirm password"
+                        >
+                        <button 
+                            type="button" 
+                            class="toggle-password" 
+                            aria-label="Toggle password visibility"
+                        >
+                            👁️
+                        </button>
+                    </div>
+                    <span class="error-message" id="signUpConfirmPasswordError"></span>
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="termsCheckbox" required>
+                    <label for="termsCheckbox">I agree to the Terms and Conditions</label>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-large">Sign Up</button>
+                <span class="form-message success-message" id="signUpSuccess"></span>
+                <span class="form-message error-message" id="signUpError"></span>
+            </form>
+
+            <div class="form-footer">
+                <p>Already have an account? <button type="button" class="toggle-form-btn" onclick="toggleForms()">Sign In</button></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/utils.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>
